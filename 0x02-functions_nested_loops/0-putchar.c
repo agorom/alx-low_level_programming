@@ -1,9 +1,20 @@
-#include <stdio.h>
+#include "main.h"
+
 /**
- * main - The entry point
- * Return 0: Always return success
+ * main - prints _putchar
+ *
+ * Description: prints _putchar
+ * Return: 0 (Success)
  */
-int main(void){
-    printf("%c \n_putchar");
-    return (0);
+int main(void)
+{
+	char text[9] = "_putchar";
+	int i = 0;
+
+	for (i = 0; i < 8; i++)
+	{
+		_putchar(text[i]);
+	}
+	_putchar('\n');
+	return (0);
 }
