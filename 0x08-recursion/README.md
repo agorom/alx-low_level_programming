@@ -1,1 +1,1 @@
-This is recursion in C
+Static library
