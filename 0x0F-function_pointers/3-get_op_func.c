@@ -1,57 +1,32 @@
+#include "3-calc.h"
+#include <stdlib.h>
+#include <stdio.h>
 /**
- * op_add - Adds two numbers
- * @a: int 1
- * @b: int 2
- * Return: Returns result
+ * get_op_func - returns a pointer to the operation
+ * @s: pointer to the operator entered by the user
+ *
+ * Description: return the required result
+ *
+ * Return: return pointer to function
  */
-int op_add(int a, int b)
+int (*get_op_func(char *s))(int, int)
 {
-	return (a + b);
-}
+	op_t ops[] = {
+		{"+", op_add},
+		{"-", op_sub},
+		{"*", op_mul},
+		{"/", op_div},
+		{"%", op_mod},
+		{NULL, NULL}
+	};
+	int i;
 
-/**
- * op_sub - subtracts two numbers
- * @a: int 1
- * @b: int 2
- * Return: Returns result
- */
-int op_sub(int a, int b)
-{
-	return (a - b);
-}
-
-/**
- * op_mul - Multiplies two numbers
- * @a: int 1
- * @b: int 2
- * Return: Returns result
- */
-
-int op_mul(int a, int b)
-{
-	return (a * b);
-}
-
-/**
- * op_div - Divides two numbers
- * @a: int 1
- * @b: int 2
- * Return: Returns result
- */
-
-int op_div(int a, int b)
-{
-	return (a / b);
-}
-
-/**
- * op_mod - Modules two numbers
- * @a: int 1
- * @b: int 2
- * Return: Returns result
- */
-
-int op_mod(int a, int b)
-{
-	return (a % b);
+	i = 0;
+	while (ops[i].op != NULL)
+	{
+		if (*s == *(ops[i].op))
+			return (ops[i].f);
+		i++;
+	}
+	return (NULL);
 }
